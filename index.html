@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>Lost and Found</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -10,44 +10,93 @@
 <style>
 body,h2,h3,h4,h5,h6 {font-family: "Rubik", sans-serif}
 .product {
-    width: 31%; /* Adjust the width as needed */
-    margin: 1%; /* Add margin between template products */
-    display: inline-block; /* Ensures products stay in a row */
+    width: 31%;
+    margin: 1%;
+    display: inline-block;
     background-color:white;
     border-radius: 10px 10px 10px;
-  }
+}
 
-  @media (max-width: 600px) {
+#addProductSection {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#addProductForm {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#addProductForm label {
+  display: block;
+  margin-top: 10px;
+}
+
+#addProductForm input,
+#addProductForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#addProductForm button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#addProductForm button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments for form inputs */
+@media (max-width: 600px) {
+  #addProductForm input,
+  #addProductForm textarea,
+  #addProductForm button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
     .product {
       width: 100%;
       margin: 0;
     }
-  }
-.w3-main{
-  background-color:rgb(204, 213, 174) ;
 }
-
+.w3-main{
+  background-color:rgb(204, 213, 174);
+}
 </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px; background-image: url('bg.jpeg'); background-size: cover;"" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px; background-image: url('bg.jpeg'); background-size: cover;" id="mySidebar"><br>
   <div class="w3-container">
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
     <img src="user2.webp" style="width:45%;" class="w3-round"><br><br>
-    <h4 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, serif; font-size: x-large; font-weight: bolder; font_;" ><b>BHUPENDRA JOGI</b></h4>
-    
+    <h4 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, serif; font-size: x-large; font-weight: bolder;" ><b>BHUPENDRA JOGI</b></h4>
   </div>
   <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ACCOUNT</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i><b>ABOUT</b></a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i><b>MESSAGES</b></a>
-    <a href="#setting" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-gear fa-fw w3-margin-right"></i><b>SETTINGS</b></a>
+    <a href="#portfolio" onclick="w3_close(); showSection('portfolio')" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ACCOUNT</a>
+    <a href="#about" onclick="w3_close(); showSection('about')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i><b>ABOUT</b></a>
+    <a href="#contact" onclick="w3_close(); showSection('contact')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i><b>MESSAGES</b></a>
+    <a href="#setting" onclick="w3_close(); showSection('setting')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-gear fa-fw w3-margin-right"></i><b>SETTINGS</b></a>
+    <a href="#addProductSection" onclick="w3_close(); showSection('addProductSection')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-plus fa-fw w3-margin-right"></i><b>ADD PRODUCT</b></a>
   </div>
-  
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -61,19 +110,18 @@ body,h2,h3,h4,h5,h6 {font-family: "Rubik", sans-serif}
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <h1><b>LOST AND FOUND</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-      <span class="w3-margin-right">Filter:</span> 
-      <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white">TODAY</button>
-      <button class="w3-button w3-white w3-hide-small">THIS WEEK</button>
-      <button class="w3-button w3-white w3-hide-small">THIS MONTH</button>
-    </div>
+      <h1><b>LOST AND FOUND</b></h1>
+      <div class="w3-section w3-bottombar w3-padding-16">
+        <span class="w3-margin-right">Filter:</span> 
+        <button class="w3-button w3-black">ALL</button>
+        <button class="w3-button w3-white">TODAY</button>
+        <button class="w3-button w3-white w3-hide-small">THIS WEEK</button>
+        <button class="w3-button w3-white w3-hide-small">THIS MONTH</button>
+      </div>
     </div>
   </header>
-  
-  
 
+  <!-- Existing template -->
   <template id="product-template">
     <div class="product" >
       <img class="image" src="" alt="" style="width:100%">
@@ -83,6 +131,7 @@ body,h2,h3,h4,h5,h6 {font-family: "Rubik", sans-serif}
     </div>
   </template>
 
+  <!-- Existing product list container -->
   <div class="product-list"></div>
 
   <!-- Pagination -->
@@ -97,46 +146,117 @@ body,h2,h3,h4,h5,h6 {font-family: "Rubik", sans-serif}
     </div>
   </div>
 
-  
+  <!-- New section for adding products -->
+  <div id="addProductSection" class="w3-container">
+    <h2><b>Add Product</b></h2>
+    <form id="addProductForm">
+      <label for="productName"> Name:</label>
+      <input type="text" id="productName" name="productName" required><br>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
+      <label for="productDescription">Product Description:</label>
+      <textarea id="productDescription" name="productDescription" required></textarea><br>
+
+      <label for="productImage">Product Image:</label>
+      <input type="file" id="productImage" name="productImage" onchange="previewImage()" required><br>
+
+
+      <label for="contactInfo">Contact Information:</label>
+      <input type="text" id="contactInfo" name="contactInfo" required><br>
+
+      <button type="button" onclick="addProduct()">Add Product</button>
+    </form>
+  </div>
+
+  <script>
+    // Existing script for opening and closing sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Existing script for updating the product array and UI
+    const productTemplate = document.querySelector("#product-template");
+    const productContainer = document.querySelector(".product-list");
+
+    const products = [
+      { name: "Ankur Sahu", description: "Found at reception, Admin Office", imageUrl: "bagpack.jpeg", contactInfo: "9845557632" },
+      { name: "Divya Anand", description: "Found at Girls Parking lot", imageUrl: "purse.jpeg", contactInfo: "6516522299" },
+      { name: "Carlsen", description: "Found at Sports Ground", imageUrl: "bracelet.webp", contactInfo: "8923334113" },
+      { name: "Samay Raina", description: "Found at Seminar Hall", imageUrl: "headphone.jpg", contactInfo: "samay2288@gmail.com" },
+      { name: "Tanmay Kumar", description: "Found at CSE Lab1", imageUrl: "bottle.jpeg", contactInfo: "832791201" },
+      
+    ];
+
+    function updateUI() {
+      productContainer.innerHTML = "";
+
+      products.sort((a, b) => b.uploadTime - a.uploadTime);
+
+      products.forEach(product => {
+        const instance = productTemplate.content.cloneNode(true);
+        instance.querySelector('.image').src = product.imageUrl;
+        instance.querySelector('.user-name').textContent = product.name;
+        instance.querySelector('.product-description').textContent = product.description;
+        instance.querySelector('.contact-info').textContent = product.contactInfo;
+        instance.querySelector('.product').style.width = '31%';
+        instance.querySelector('.product').style.margin = '1%';
+        productContainer.appendChild(instance);
+      });
+    }
+
+    function previewImage() {
+  const input = document.getElementById('productImage');
+  const image = document.querySelector('.image');
+
+  const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = function () {
+    image.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 }
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
+function addProduct() {
+  const productName = document.getElementById("productName").value;
+  const productDescription = document.getElementById("productDescription").value;
+  const productImage = document.querySelector('.image').src; // Use the updated source here
+  const contactInfo = document.getElementById("contactInfo").value;
+  const uploadTime = new Date().getTime(); // Add uploadTime property
+
+  const newProduct = { name: productName, description: productDescription, imageUrl: productImage, contactInfo: contactInfo, uploadTime: uploadTime };
+
+  products.push(newProduct);
+
+  document.getElementById("productName").value = "";
+  document.getElementById("productDescription").value = "";
+  document.getElementById("productImage").value = "";
+  document.getElementById("contactInfo").value = "";
+
+  updateUI();
 }
-const productTemplate=document.querySelector("#product-template")
-const productContainer=document.querySelector(".product-list")
+   
 
-const products=[
-  {name:"asd", description:"Lorem23",imageUrl: "bagpack.jpeg",contactInfo:""},
-  {name:"asd", description:"sdnifsion",imageUrl: "purse.jpeg",contactInfo:""},
-  {name:"mkk", description:"wenfowie",imageUrl: "bracelet.webp",contactInfo:""},
-  {name:"einf", description:"wienfwif",imageUrl: "bottle.jpeg",contactInfo:""},
-  {name:"kdnv", description:"wenifo",imageUrl: "bottle.jpeg",contactInfo:""},
-  {name:"sdkv", description:"wenifwoin",imageUrl: "bottle.jpeg",contactInfo:""},
+    // New script for section toggling
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.w3-container');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
 
-]
+      const selectedSection = document.getElementById(sectionId);
+      selectedSection.style.display = 'block';
+    }
 
-products.forEach(product => {
-  const instance = productTemplate.content.cloneNode(true);
-  instance.querySelector('.image').src = product.imageUrl;
-  instance.querySelector('.user-name').textContent = product.name;
-  instance.querySelector('.product-description').textContent = product.description;
-  instance.querySelector('.contact-info').textContent = product.contactInfo;
-  instance.querySelector('.product').style.width = '31%'; 
-  instance.querySelector('.product').style.margin = '1%'; 
-  instance.querySelector('.product').style.grid;
-  productContainer.appendChild(instance);
-});
-
-s
-</script>
-
+    // Initial UI update
+    updateUI();
+  </script>
 </body>
 </html>
